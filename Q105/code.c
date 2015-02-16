@@ -115,11 +115,11 @@ int main(){
 				start = head;			
 			}else{
 				while(p->next!=NULL&&p->next->pos<=l){
-					temp_h = p->height;
-					start = p;					
+					temp_h = p->height;					
 					p = p->next;
 				}
 				if(p->next!=NULL){
+					start = p;
 					if(l==p->pos){
 						if(h>temp_h){
 							n = (Node*) malloc( sizeof(Node) );
