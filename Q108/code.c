@@ -7,47 +7,44 @@ int main(){
 	int n, i, j, a, b, sum, max;
 	int **matrix, **sum_lu;
 	scanf("%d", &n);
-	matrix = (int **) malloc( n * sizeof(int*) );
-	sum_lu = (int **) malloc( n * sizeof(int*) );
-	for(i=0; i<n; i++){
-		matrix[i] = malloc( n * sizeof(int) );
-		sum_lu[i] = malloc( n * sizeof(int) );
-		for(j=0; j<n; j++){
-			scanf("%d", &matrix[i][j]);
+	matrix = (int **) malloc( (n+1) * sizeof(int*) );
+	sum_lu = (int **) malloc( (n+1) * sizeof(int*) );
+	for(i=0; i<=n; i++){
+		matrix[i] = (int *) malloc( (n+1) * sizeof(int) );
+		sum_lu[i] = (int *) malloc( (n+1) * sizeof(int) );
+		for(j=0; j<=n; j++){
 			sum_lu[i][j] = 0;
 		}
 	}
-	max = matrix[0][0];
+	for(i=1; i<=n; i++){
+		for(j=1; j<=n; j++){
+			scanf("%d", &matrix[i][j]);
+		}
+	}
+	max = matrix[1][1];
 	/*
-		loop for sum
+		loop for summation
 	*/
-	for(i=0; i<n ;i++){
-		for(j=0; j<n; j++){
-			sum_lu[i][j] = ((i>0)? sum_lu[i-1][j] : 0) 
-				     + ((j>0)? sum_lu[i][j-1] : 0) 
-				     - ((i>0&&j>0)? sum_lu[i-1][j-1] : 0) 
+	for(i=1; i<=n; i++){
+		for(j=1; j<=n; j++){
+			sum_lu[i][j] = sum_lu[i-1][j] 
+				     + sum_lu[i][j-1] 
+				     - sum_lu[i-1][j-1] 
 				     + matrix[i][j];
 		}
 	}
 	/*
-		loop for finding
+		loop for finding maximum.
 	*/
-	for(i=0; i<n; i++){
-		for(j=0; j<n; j++){
-			for(a=i; a<n; a++){
-				for(b=j; b<n; b++){
+	for(i=1; i<=n; i++){
+		for(j=1; j<=n; j++){
+			for(a=i; a<=n; a++){
+				for(b=j; b<=n; b++){
 					sum = sum_lu[a][b]
-					    - ((j>0)? sum_lu[a][j-1] : 0)
-					    - ((i>0)? sum_lu[i-1][b] : 0)
-					    + ((i>0&&j>0)? sum_lu[i-1][j-1] : 0);
+					    - sum_lu[a][j-1]
+					    - sum_lu[i-1][b]
+					    + sum_lu[i-1][j-1];
 					if(sum > max) max = sum;
-					/* Debug
-					printf("A(%d,%d,%d,%d)= %d ", i, j, a, b, sum);
-					printf("[%d,%d,%d,%d]\n", sum_lu[a][b] 
-								, ((j>0)? sum_lu[a][j-1] : 0)
-								, ((i>0)? sum_lu[i-1][b] : 0)
-								, ((i>0&&j>0)? sum_lu[i-1][j-1] : 0));
-					*/
 				}
 			}
 		}
@@ -56,27 +53,11 @@ int main(){
 	/*
 		Free memory
 	*/
-	for(i=0; i<n; i++){
+	for(i=0; i<=n; i++){
 		free(matrix[i]);
 		free(sum_lu[i]);
 	}
 	free(matrix);
 	free(sum_lu);
-	/* Debug
-	printf("Original Matrix:\n");
-	print_matrix(matrix, n);
-	printf("Sum of Matrix:\n");	
-	print_matrix(sum_lu, n);
-	*/
 	return 0;
-}
-
-void print_matrix(int **matrix, int n){
-	int i, j;
-	for(i=0; i<n; i++){
-		for(j=0; j<n; j++){
-			printf("%d ", matrix[i][j]);
-		}
-		printf("\n");
-	}
 }
