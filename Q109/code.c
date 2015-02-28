@@ -14,14 +14,18 @@ typedef struct Kingdom{
 
 void add_point(Kingdom *, int, int);
 void construct_convexhull(Kingdom *);
-void draw_graph(Kingdom);
+void draw_graph(Kingdom *, int);
+
 int is_lesser(Coordinate, int, int);
 int is_cck(Coordinate, Coordinate, Coordinate);
 int is_inside_kingdom(Kingdom, int, int);
 
+float area(Kingdom);
+
 int main(){
 	Kingdom k[20];
 	int x, y, n, i, num=0;
+	float sum=0;
 	while(scanf("%d", &n)==1&&n!=-1){
 		/*
 			Initialize a new array(Kingdom).
@@ -43,10 +47,10 @@ int main(){
 	/*
 		Accept locations of all missiles.
 	*/
-	while(scanf("%d %d"), &x, &y)==2){
+	while(scanf("%d %d", &x, &y)==2){
 		for(i=0; i<num; i++){
-			if(is_inside_kingdom(k[num], x, y)>0){
-				k[num].flag = 0;
+			if(is_inside_kingdom(k[i], x, y)!=0){
+				k[i].flag = 0;
 			}
 		}	
 	}
@@ -54,10 +58,11 @@ int main(){
 		Calculate the area of remaining kingdom.
 	*/
 	for(i=0; i<num; i++){
-		if(k[num].flag==1){
-			
+		if(k[i].flag==0){
+			sum += area(k[i]);		
 		}
-	}	
+	}
+	printf("%0.2f\n", sum);	
 	/*
 		Release memory.
 	*/
@@ -139,23 +144,33 @@ void construct_convexhull(Kingdom *k){
 /*
 	Draw a simple graph.
 */
-void draw_graph(Kingdom k){
+void draw_graph(Kingdom *k, int num){
 	int matrix[51][51];
 	int i, j;
+	/*
+		Initialize the matrix ( painting ).
+	*/
 	for(i=0; i<51; i++){
 		for(j=0; j<51; j++){
 			matrix[i][j] = 0;
 		}
 	}
-	for(i=0; i<k.size; i++){
-		matrix[k.array[i].y][k.array[i].x] = 1;
+	/*
+		Put points on the painting.
+	*/
+	for(i=0; i<num; i++){
+		for(j=0; j<k[i].size; j++){
+			matrix[k[i].array[j].y][k[i].array[j].x] = i+1;
+		}
 	}
+	/*
+		Draw the graph.
+	*/
 	for(i=0; i<51; i++){
 		for(j=0; j<51; j++){
 			switch(matrix[i][j]){
-				case 0:	printf(" "); break;
-				case 1: printf("*"); break;
-				default: break;
+				case 0:	printf("+"); break;
+				default: printf("%d", matrix[i][j]);
 			}
 		}
 		printf("\n");
@@ -202,10 +217,52 @@ int is_cck(Coordinate a, Coordinate b, Coordinate c){
 }
 
 /*
-	Return value > 0 if the point is inside the kingdom.
-	Return value = 0 if the point lies on the boundary of the kingdom.
-	Reutrn value < 0 if the point is outside the kingdom. 
+	Return value != 0 if the point is inside the kingdom.
+	Return value = 0 if the point is outside the kingdom.
 */
 int is_inside_kingdom(Kingdom k, int x, int y){
+	int wn = 0, i;
+	Coordinate p, v1, v2;
+	p.x = x;
+	p.y = y;
+	for(i=0; i<k.size; i++){
+		if(i+1!=k.size){
+			v1 = k.array[i];
+			v2 = k.array[i+1];
+		}else{
+			v1 = k.array[i];
+			v2 = k.array[0];
+		}
+		if(v1.y<=y){
+			if(v2.y > y){
+				if(is_cck(v1, v2, p) > 0){
+					wn++;
+				} 
+			}
+		}else{
+			if(v2.y <= y){
+				if(is_cck(v1, v2, p) < 0){
+					wn--;
+				}
+			}
+		}
+	}
+	return wn;
+}
 
+float area(Kingdom k){
+	int i;
+	float sum = 0;
+	Coordinate v1, v2;
+	for(i=1; i<=k.size; i++){
+		if(i!=k.size){
+			v1 = k.array[i-1];
+			v2 = k.array[i];
+		}else{
+			v1 = k.array[i-1];
+			v2 = k.array[0];
+		}
+		sum += (v1.x*v2.y-v1.y*v2.x);
+	}	
+	return 0.5*sum;
 }
