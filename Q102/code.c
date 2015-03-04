@@ -43,8 +43,13 @@ int main(){
 				words[i][1] = word[y];	
 			}else if(l==r){
 				bins[3][i] = l;
-				words[i][0] = (word[x]>word[y])? word[y]: word[x];
-				words[i][1] = (word[x]>word[y])? word[x]: word[y];
+				if(word[x]>word[y]){
+					words[i][0] = word[y];
+					words[i][1] = word[x];
+				}else{
+					words[i][0] = word[x];
+					words[i][1] = word[y];
+				}
 			}else{
 				bins[3][i] = l;
 				words[i][0] = word[y];
