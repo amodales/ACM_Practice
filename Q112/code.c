@@ -13,15 +13,20 @@
 */
 typedef enum {PAR_L, INT, PAR_R} Type;
 
-typedef struct Node{
-	int number;
-	struct Node *left, *right;
-}Node;
-
 typedef struct Token{
 	int number;
 	Type type;
 }Token;
+
+typedef struct Vector{
+	int *list;
+	int size, capacity;
+}Vector;
+
+/*
+	Global Variable
+*/
+Vector Record;
 
 /*
 	Function of Token
@@ -63,31 +68,59 @@ Token getNextToken(){
 }
 
 /*
-	Functions of Node(Tree)
+	Function of Vector
 */
-void Release_Tree(Node *ptr){
-	if(ptr!=NULL){
-		Release_Tree(ptr->left);
-		Release_Tree(ptr->right);
-		free(ptr);
-	}
+void Initialize_Vector(){
+	Record.capacity = 1000;
+	Record.list = (int*) calloc( 1000, sizeof(int) );
+	Record.size = 0;
 }
 
-Node* BuildUpTree(Token Tok){
-	Node *ptr;
+void Push(int number){
+	int i, *ptr;
+	if(Record.size+1>=Record.capacity){
+		Record.capacity = Record.capacity * 1.5;
+		ptr = (int*) calloc( Record.capacity, sizeof(int));
+		for(i=0; i<Record.size; i++){
+			ptr[i] = Record.list[i];
+		}
+		free(Record.list);
+		Record.list = ptr;
+	}
+	Record.list[Record.size++] = number;
+}
+
+int Search_Vector(int number){
+	int i;
+	for(i=0; i<Record.size; i++){
+		if(Record.list[i]==number)	return 1;
+	}
+	return 0;
+}
+
+void Release_Vector(){
+	free(Record.list);
+}
+
+/*
+	Functions of Node(Tree)
+*/
+int BuildUpTree(Token Tok, int sum){
+	int left, right;
 	switch(Tok.type){
 		case INT:
-			ptr = (Node*) malloc( sizeof(Node) );
-			ptr->number = Tok.number;
 			getNextToken();
-			ptr->left = BuildUpTree(getNextToken());
+			left = BuildUpTree(getNextToken(), sum+Tok.number);
 			getNextToken();
-			ptr->right = BuildUpTree(getNextToken());
+			right = BuildUpTree(getNextToken(), sum+Tok.number);
 			getNextToken();
-			return ptr;
+			if(left==0&&right==0){
+				Push(sum+Tok.number);
+			}
+			return 1;
 			break;
 		case PAR_R:
-			return NULL;
+			return 0;
 			break;
 		default:
 			printf("Are you fucking kidding me?\n");
@@ -95,36 +128,17 @@ Node* BuildUpTree(Token Tok){
 	}
 }
 
-void SHOW_TREE(Node *ptr){
-	if(ptr!=NULL){
-		printf("%d ", ptr->number);
-		SHOW_TREE(ptr->left);
-		SHOW_TREE(ptr->right);
-	}
-}
-
-int search(Node *ptr, int num, int sum){
-	if(ptr==NULL)	return 0;
-	if(ptr->left==NULL&&ptr->right==NULL){
-		return ((ptr->number+sum)==num);
-	}
-	if(search(ptr->left, num, sum+ptr->number))	return 1;
-	if(search(ptr->right, num, sum+ptr->number))	return 1;
-	return 0;
-}
-
 int main(){
-	int num, accept, pair;
+	int num;
 	Token Tok;
-	Node *root;
 	while(scanf("%d", &num)==1){
-		root = NULL;
+		Initialize_Vector();
 		getNextToken();
-		root = BuildUpTree(getNextToken());
-		(search(root, num, 0)==1)? 
+		BuildUpTree(getNextToken(), 0);
+		(Search_Vector(num)==1)? 
 			printf("yes\n"):
 			printf("no\n");
-		Release_Tree(root);
+		Release_Vector();
 	}
 	return 0;
 }
