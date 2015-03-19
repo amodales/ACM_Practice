@@ -19,8 +19,8 @@ typedef struct Token{
 }Token;
 
 typedef struct Vector{
-	int *list;
-	int size, capacity;
+	int list[1000];
+	int size;
 }Vector;
 
 /*
@@ -70,23 +70,11 @@ Token getNextToken(){
 /*
 	Function of Vector
 */
-void Initialize_Vector(){
-	Record.capacity = 1000;
-	Record.list = (int*) calloc( 1000, sizeof(int) );
+void Clear_Vector(){
 	Record.size = 0;
 }
 
 void Push(int number){
-	int i, *ptr;
-	if(Record.size+1>=Record.capacity){
-		Record.capacity = Record.capacity * 1.5;
-		ptr = (int*) calloc( Record.capacity, sizeof(int));
-		for(i=0; i<Record.size; i++){
-			ptr[i] = Record.list[i];
-		}
-		free(Record.list);
-		Record.list = ptr;
-	}
 	Record.list[Record.size++] = number;
 }
 
@@ -96,10 +84,6 @@ int Search_Vector(int number){
 		if(Record.list[i]==number)	return 1;
 	}
 	return 0;
-}
-
-void Release_Vector(){
-	free(Record.list);
 }
 
 /*
@@ -132,13 +116,12 @@ int main(){
 	int num;
 	Token Tok;
 	while(scanf("%d", &num)==1){
-		Initialize_Vector();
+		Clear_Vector();
 		getNextToken();
 		BuildUpTree(getNextToken(), 0);
 		(Search_Vector(num)==1)? 
 			printf("yes\n"):
 			printf("no\n");
-		Release_Vector();
 	}
 	return 0;
 }
