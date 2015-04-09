@@ -11,7 +11,7 @@ typedef struct Node{
 	int parent;
 }Node;
 
-void Parse(char [], char [], char []);
+void Parse(char [], char []);
 void Print_Relation(int, int);
 int Add_Person(char []);
 
@@ -24,15 +24,13 @@ int main(){
 		1 newline character + 1 null character = 63
 	*/
 	int accept = 0, index_first, index_second, m, n, l, r;
-	char line[63], first[31], second[31];
+	char first[31], second[31], c;
 	/*
 		Process of building a tree.
 	*/
 	while(!accept){
-		memset(line, 0, 63);
-		fgets(line, 63, stdin);
-		if(strcmp("no.child no.parent\n", line)!=0){
-			Parse(first, second, line);
+		Parse(first, second);
+		if(strcmp("no.child", first)!=0&&strcmp("no.parent", second)!=0){
 			index_first = Add_Person(first);
 			index_second = Add_Person(second);
 			people[index_first].parent = index_second;
@@ -43,9 +41,8 @@ int main(){
 	/*
 		Receiving queries and giving answers.
 	*/
-	memset(line, 0, 63);
-	while(fgets(line, 63, stdin)!=NULL){
-		Parse(first, second, line);
+	while(!feof(stdin)){
+		Parse(first, second);
 		index_first = Add_Person(first);
 		index_second = Add_Person(second);
 		m = 0;
@@ -67,25 +64,30 @@ int main(){
 		}else{
 			printf("no relation\n");
 		}
-		memset(line, 0, 63);
+		c = fgetc(stdin);
+		if(c!=EOF)	ungetc(c, stdin);
 	}
 	return 0;
 }
 
-void Parse(char first[], char second[], char line[]){
-	int i = 0, j = 0;
-	while(line[i]=='.'||line[i]>='a'&&line[i]<='z'||line[i]=='-'){
-		first[i] = line[i];
+void Parse(char first[], char second[]){
+	char c;
+	int i = 0;
+	c = fgetc(stdin);
+	while(c=='.'||c>='a'&&c<='z'||c=='-'){
+		first[i] = c;
 		i++;
+		c = fgetc(stdin);
 	}
 	first[i] = '\0';
-	i++;
-	while(line[i]=='.'||line[i]>='a'&&line[i]<='z'||line[i]=='-'){
-		second[j] = line[i];
+	i = 0;
+	c = fgetc(stdin);
+	while(c=='.'||c>='a'&&c<='z'||c=='-'){
+		second[i] = c;
 		i++;
-		j++;
+		c = fgetc(stdin);
 	}
-	second[j] = '\0';
+	second[i] = '\0';
 }
 
 /*
@@ -120,20 +122,18 @@ void Print_Relation(int m, int n){
 	However, if the person has existed in the tree already, just return its index.
 */
 int Add_Person(char name[]){
-	int ret, i;
+	int i;
 	for(i=0; i<size; i++){
 		if(strcmp(name, people[i].name)==0){
 			return i;
 		}
 	}
-	ret = i;
 	i = 0;
 	while(name[i]!='\0'){
-		people[ret].name[i] = name[i];
+		people[size].name[i] = name[i];
 		i++;
 	}
-	people[ret].name[i] = '\0';
-	people[ret].parent = -1;
-	size++;
-	return ret;
+	people[size].name[i] = '\0';
+	people[size].parent = -1;
+	return size++;
 }
