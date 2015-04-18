@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- saved from url=(0046)http://uva.onlinejudge.org/external/1/124.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Following Orders</title>
+<meta name="description" content="Following Orders">
+<meta name="keywords" content="htmlatex">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<link rel="STYLESHEET" href="http://uva.onlinejudge.org/external/1/htmlatex.css">
+
+</head>
+<body lang="EN" bgcolor="#FFFFFF">
+ <h1><br clear="ALL"><center><table bgcolor="#0060F0"><tbody><tr><td><b><font size="5" color="#C0FFFF">&nbsp;<a name="SECTION0001000000000000000000">Following Orders</a></font>&nbsp;</b></td></tr></tbody></table></center></h1>
+<p>
+</p><h2><font color="#0070E8"><a name="SECTION0001001000000000000000">Background</a></font></h2>
+<p>
+Order is an important concept in mathematics and in computer science.
+For example, Zorn's Lemma states:  ``a partially ordered set in which
+every chain has an upper bound contains a maximal element.''
+Order is also important in reasoning about the fix-point semantics of
+programs.
+</p><p>
+</p><p>
+This problem involves neither Zorn's Lemma nor fix-point semantics, but
+does involve order.
+</p><p>
+</p><h2><font color="#0070E8"><a name="SECTION0001002000000000000000">The Problem</a></font></h2>
+<p>
+Given a list of variable constraints of the form
+<code>x &lt; y</code>, you are to write a program that prints all
+orderings of the variables that are consistent with the constraints.
+</p><p>
+</p><p>
+For example, given the constraints <code>x &lt; y</code>  and <code>x &lt; z</code> there
+are two orderings of the variables x, y, and z that are consistent with these
+constraints: <code> x y z</code> and <code>x z y</code>.
+</p><p>
+</p><h2><font color="#0070E8"><a name="SECTION0001003000000000000000">The Input</a></font></h2>
+<p>
+The input consists of a sequence of constraint specifications.  A
+specification consists of two lines: a list of variables on one line
+followed by a list of constraints on the next line.  A constraint is
+given by a pair of variables, 
+where <code>x y</code> indicates that <code>x &lt; y</code>.
+</p><p>
+</p><p>
+All variables are single character, lower-case letters.  There will be
+at least two variables, and no more than 20 variables in a specification.
+There will be at least one constraint, and no more than 50 constraints
+in a specification.  There will be at least one, and no more than 300
+orderings consistent with the contraints in a specification.
+</p><p>
+</p><p>
+Input is terminated by end-of-file.
+</p><p>
+</p><h2><font color="#0070E8"><a name="SECTION0001004000000000000000">The Output</a></font></h2>
+<p>
+For each constraint specification, all orderings consistent with
+the constraints should be printed.   
+Orderings are printed in lexicographical (alphabetical) order, one per
+line.
+</p><p>
+</p><p>
+Output for different constraint specifications is separated by a blank line.
+</p><p>
+</p><h2><font color="#0070E8"><a name="SECTION0001005000000000000000">Sample Input</a></font></h2>
+<p>
+</p><pre>a b f g
+a b b f
+v w x y z
+v y x v z v w v</pre>
+<p>
+</p><h2><font color="#0070E8"><a name="SECTION0001006000000000000000">Sample Output</a></font></h2>
+<p>
+</p><pre>abfg
+abgf
+agbf
+gabf
+
+wxzvy
+wzxvy
+xwzvy
+xzwvy
+zwxvy
+zxwvy</pre>
+<p>
+
+
+</p></body></html>
