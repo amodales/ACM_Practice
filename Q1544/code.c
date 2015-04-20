@@ -3,7 +3,7 @@
 
 typedef struct BigNumber{
 	int length;
-	char digit[2001];
+	int digit[1001];
 }BigNumber;
 
 void Reverse(BigNumber *);
@@ -11,7 +11,7 @@ void Reverse(BigNumber *);
 BigNumber Add(BigNumber, BigNumber);
 BigNumber Sub(BigNumber, BigNumber);
 BigNumber MultiplyInt(BigNumber, int);
-BigNumber MoveLeftInt(BigNumber, int);
+BigNumber Multiply(BigNumber, BigNumber);
 
 int main(){
 	BigNumber a, b, p_result[500], result;
@@ -128,13 +128,10 @@ int main(){
 			}
 			printf("\n");
 		}else{
-			result.length = 1;
-			result.digit[0] = 0;
-			result.digit[1] = '\0';
 			for(i=0; i<b.length; i++){
 				p_result[i] = MultiplyInt(a, b.digit[i]);
-				result = Add(MoveLeftInt(p_result[i], i), result);
 			}
+			result = Multiply(a, b);
 			limit = (result.length>b.length+1)? result.length:b.length+1;
 			s_limit = (p_result[0].length>b.length+1)? p_result[0].length:b.length+1;
 			/*
@@ -292,16 +289,30 @@ BigNumber MultiplyInt(BigNumber a, int n){
 	return ret;
 }
 
-BigNumber MoveLeftInt(BigNumber a, int n){
-	BigNumber ret;
-	int i;
-	for(i=0; i<n; i++){
-		ret.digit[i] = 0;
+BigNumber Multiply(BigNumber a, BigNumber b){
+	BigNumber ret, temp;
+	int i, j, carry;
+	if(b.length>a.length){
+		temp = a;
+		a = b;
+		b = temp;
 	}
-	for(i=0; i<a.length; i++){
-		ret.digit[i+n] = a.digit[i];
+	ret.digit[0] = 0;
+	for(i=0; i<b.length+a.length-1; i++){
+		for(j=0; j<b.length; j++){
+			if(i-j<a.length&&i-j>=0){
+				ret.digit[i] += a.digit[i-j]*b.digit[j];
+			}
+		}
+		ret.digit[i+1] = ret.digit[i]/10;
+		ret.digit[i] = ret.digit[i]%10;
 	}
-	ret.length = a.length + n;
-	ret.digit[ret.length] = '\0';
+	while(ret.digit[i]>0){
+		ret.digit[i+1] = ret.digit[i]/10;
+		ret.digit[i] = ret.digit[i]%10;
+		i++;
+	}
+	ret.length = i;
+	ret.digit[i] = '\0';
 	return ret;
 }

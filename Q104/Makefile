@@ -1,12 +1,11 @@
-SOURCE = code.cpp
+SOURCE = code.c
 OUTPUT = code.out
 
 normal:
-	g++ $(SOURCE) -o $(OUTPUT) -g
-	./$(OUTPUT)
+	gcc $(SOURCE) -o $(OUTPUT) -g
 
 clear:
 	rm $(OUTPUT)
 
 edit:
-	gedit $(SOURCE)
+	vim $(SOURCE)
