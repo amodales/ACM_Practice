@@ -11,9 +11,6 @@ int main(){
 	while(count<m){
 		if(count!=0)	printf("\n");
 		scanf("%d", &n);
-		for(i=0; i<n; i++){
-			line[i] = i;
-		}
 		/*
 			HEAD
 		*/
