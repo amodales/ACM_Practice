@@ -1,0 +1,100 @@
+9 piles remaining: 40 1 2 2 2 1 1 2 1
+12 piles remaining: 37 1 1 1 1 1 1 5 1 1 1 1
+6 piles remaining: 32 2 5 2 4 7
+36 piles remaining: 2 3 2 1 1 1 2 2 1 2 1 2 1 1 3 1 1 1 2 1 2 1 1 1 1 1 1 2 2 1 1 1 2 1 2 1
+8 piles remaining: 30 4 2 2 5 4 4 1
+5 piles remaining: 41 7 2 1 1
+8 piles remaining: 32 3 8 2 2 3 1 1
+5 piles remaining: 41 3 3 4 1
+4 piles remaining: 49 1 1 1
+5 piles remaining: 45 2 3 1 1
+4 piles remaining: 44 6 1 1
+9 piles remaining: 38 5 1 3 1 1 1 1 1
+11 piles remaining: 20 13 2 1 3 3 4 1 3 1 1
+6 piles remaining: 39 3 5 2 1 2
+4 piles remaining: 43 7 1 1
+5 piles remaining: 40 9 1 1 1
+15 piles remaining: 25 3 1 1 1 2 1 1 7 3 1 2 2 1 1
+4 piles remaining: 44 2 5 1
+11 piles remaining: 18 12 9 2 2 2 1 2 1 1 2
+4 piles remaining: 45 5 1 1
+5 piles remaining: 40 8 2 1 1
+5 piles remaining: 37 2 9 2 2
+7 piles remaining: 42 3 2 1 2 1 1
+8 piles remaining: 36 6 2 4 1 1 1 1
+6 piles remaining: 31 9 7 1 3 1
+16 piles remaining: 23 2 1 2 1 3 1 1 1 3 4 4 1 3 1 1
+3 piles remaining: 50 1 1
+7 piles remaining: 33 7 3 3 4 1 1
+20 piles remaining: 9 4 5 2 1 3 1 1 4 2 1 1 2 3 3 1 3 2 1 3
+12 piles remaining: 25 9 1 2 4 1 3 2 1 2 1 1
+22 piles remaining: 21 2 1 2 1 1 1 1 1 2 4 1 1 2 1 2 3 1 1 1 1 1
+6 piles remaining: 46 2 1 1 1 1
+12 piles remaining: 15 20 3 1 2 1 3 1 1 3 1 1
+11 piles remaining: 31 5 3 4 2 1 1 1 1 2 1
+10 piles remaining: 28 3 6 5 2 1 4 1 1 1
+15 piles remaining: 28 3 2 2 1 2 1 3 1 1 3 2 1 1 1
+19 piles remaining: 19 2 1 3 3 2 4 1 1 1 2 1 1 1 4 2 2 1 1
+11 piles remaining: 36 6 1 1 1 1 1 1 2 1 1
+7 piles remaining: 34 13 1 1 1 1 1
+23 piles remaining: 6 6 6 1 1 1 2 1 2 1 1 1 2 1 2 3 1 4 3 3 2 1 1
+18 piles remaining: 14 3 6 7 1 2 1 1 5 2 1 1 2 1 2 1 1 1
+10 piles remaining: 29 9 7 1 1 1 1 1 1 1
+4 piles remaining: 42 8 1 1
+4 piles remaining: 40 5 6 1
+7 piles remaining: 41 2 4 1 2 1 1
+7 piles remaining: 43 1 2 1 1 2 2
+7 piles remaining: 39 7 1 2 1 1 1
+14 piles remaining: 13 11 3 2 8 3 2 2 1 3 1 1 1 1
+9 piles remaining: 30 8 4 1 5 1 1 1 1
+7 piles remaining: 39 4 1 3 3 1 1
+6 piles remaining: 42 3 2 1 3 1
+4 piles remaining: 48 1 2 1
+9 piles remaining: 34 6 2 3 1 2 1 2 1
+5 piles remaining: 44 1 4 1 2
+18 piles remaining: 13 8 11 3 3 1 1 1 1 1 1 1 1 1 1 2 1 1
+4 piles remaining: 40 10 1 1
+13 piles remaining: 25 3 12 2 2 1 1 1 1 1 1 1 1
+6 piles remaining: 44 3 2 1 1 1
+2 piles remaining: 47 5
+12 piles remaining: 19 6 9 1 2 2 1 3 4 3 1 1
+4 piles remaining: 36 14 1 1
+8 piles remaining: 26 10 4 6 3 1 1 1
+10 piles remaining: 23 11 7 2 1 1 2 2 1 2
+14 piles remaining: 31 1 3 1 1 1 1 1 2 3 1 3 1 2
+16 piles remaining: 13 1 3 1 7 1 4 1 5 4 2 2 2 4 1 1
+6 piles remaining: 35 8 4 2 1 2
+8 piles remaining: 33 8 1 2 1 5 1 1
+9 piles remaining: 19 5 10 3 4 2 6 1 2
+5 piles remaining: 45 3 1 2 1
+11 piles remaining: 36 3 2 1 2 1 1 3 1 1 1
+16 piles remaining: 14 14 9 1 1 1 1 2 1 1 1 1 1 2 1 1
+9 piles remaining: 28 1 4 4 6 2 3 3 1
+23 piles remaining: 15 3 2 1 1 1 1 2 1 3 1 1 2 3 1 1 5 1 2 2 1 1 1
+6 piles remaining: 40 2 2 6 1 1
+6 piles remaining: 39 7 1 3 1 1
+6 piles remaining: 35 8 5 1 2 1
+5 piles remaining: 45 4 1 1 1
+8 piles remaining: 34 4 7 2 1 2 1 1
+5 piles remaining: 40 7 3 1 1
+10 piles remaining: 37 1 6 1 1 1 1 2 1 1
+7 piles remaining: 33 11 4 1 1 1 1
+5 piles remaining: 47 1 2 1 1
+15 piles remaining: 27 2 1 2 5 1 2 1 2 1 3 1 2 1 1
+11 piles remaining: 32 7 1 1 1 1 2 1 3 2 1
+5 piles remaining: 45 3 1 2 1
+8 piles remaining: 38 7 2 1 1 1 1 1
+5 piles remaining: 45 1 1 1 4
+16 piles remaining: 25 2 1 5 1 3 1 1 1 1 1 2 4 1 1 2
+9 piles remaining: 26 3 4 2 4 2 5 1 5
+10 piles remaining: 35 2 1 1 2 2 5 1 2 1
+5 piles remaining: 41 4 5 1 1
+6 piles remaining: 42 3 2 3 1 1
+10 piles remaining: 30 7 2 5 1 1 2 1 2 1
+13 piles remaining: 23 14 1 1 2 2 2 2 1 1 1 1 1
+6 piles remaining: 30 9 8 1 2 2
+28 piles remaining: 1 3 2 3 6 3 1 1 1 5 1 1 2 1 2 1 1 3 1 4 1 1 1 1 2 1 1 1
+10 piles remaining: 15 7 11 6 2 2 2 1 5 1
+6 piles remaining: 38 8 3 1 1 1
+9 piles remaining: 38 1 2 2 3 2 1 1 2
+5 piles remaining: 42 6 1 2 1
