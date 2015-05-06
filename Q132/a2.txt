@@ -1,0 +1,8 @@
+Test2                2
+EchteTest            2
+EchteTest2          11
+NogEenTest           5
+NogEenTest          11
+NogEenTest           5
+NogEenTest           5
+NogEenTest           8
