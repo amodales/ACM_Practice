@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 typedef struct Coordinate{
 	int x, y;
@@ -105,7 +106,7 @@ void construct_convexhull(Kingdom *k){
 		Construct upper convexhull.
 	*/
 	for(i=k->capacity-1; i>=0; i--){
-		while(size_upper>=2&&is_cck(list_upper[size_upper-1], list_upper[size_upper-2], k->array[i])>=0){
+		while(size_upper>=2&&is_cck(list_upper[size_upper-1], list_upper[size_upper-2], k->array[i])<=0){
 			size_upper--;
 		}
 		list_upper[size_upper] = k->array[i];
@@ -115,7 +116,7 @@ void construct_convexhull(Kingdom *k){
 		Construct bottom convexhull.
 	*/
 	for(i=0; i<k->capacity; i++){
-		while(size_bottom>=2&&is_cck(list_bottom[size_bottom-1], list_bottom[size_bottom-2], k->array[i])>=0){
+		while(size_bottom>=2&&is_cck(list_bottom[size_bottom-1], list_bottom[size_bottom-2], k->array[i])<=0){
 			size_bottom--;
 		}
 		list_bottom[size_bottom] = k->array[i];
@@ -204,8 +205,8 @@ int is_lesser(Coordinate a, int x, int y){
 
 /*
 	Return value = 0 if three points are colinear.
-	Return value > 0 if three points are clockwise.
-	Return value < 0 if three points are counterclockwise.
+	Return value < 0 if three points are clockwise.
+	Return value > 0 if three points are counterclockwise.
 	i.e. Return cross product of three points.
 	     A(x1,y1), B(x2,y2), C(x3,y3)
 	| x1 y1 1|   | x1    y1    1|
@@ -264,5 +265,5 @@ float area(Kingdom k){
 		}
 		sum += (v1.x*v2.y-v1.y*v2.x);
 	}	
-	return 0.5*sum;
+	return 0.5*fabs(sum);
 }

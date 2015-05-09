@@ -100,13 +100,13 @@ int Build_ConvexHull(Coordinate ch[], Coordinate points[], int count){
 	int i, size_upper, size_lower, ret;
 	Quicksort(points, 0, count-1);
 	for(i=0, size_upper=0; i<count; i++){
-		while(size_upper>=2&&is_cck(upper[size_upper-2], upper[size_upper-1], points[i])>=0){
+		while(size_upper>=2&&is_cck(upper[size_upper-2], upper[size_upper-1], points[i])<=0){
 			size_upper--;
 		}
 		upper[size_upper++] = points[i];
 	}
 	for(i=count-1, size_lower=0; i>=0; i--){
-		while(size_lower>=2&&is_cck(lower[size_lower-2], lower[size_lower-1], points[i])>=0){
+		while(size_lower>=2&&is_cck(lower[size_lower-2], lower[size_lower-1], points[i])<=0){
 			size_lower--;
 		}
 		lower[size_lower++] = points[i];
