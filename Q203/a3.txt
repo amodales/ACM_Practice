@@ -1,0 +1,11 @@
+Scenario: in1
+
+Boat ID         Bearing      Distance   Lights (left to right)
+---------------------------------------------------------------
+Ship1              0.00       10.00     Green Red Masthead
+Ship2              0.00       10.00     Green Masthead Red
+Ship3              0.00       10.00     Masthead Green Red
+** Collision warning -->Ship1:  Distance =  9.90
+** Collision warning -->Ship2:  Distance =  9.90
+** Collision warning -->Ship3:  Distance =  9.90
+***************************************************************
